@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sistema de Gestão</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Open Iconic Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilo para o menu lateral */
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Altura do menu superior */
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            padding-top: 3.5rem;
+            background-color: #f8f9fa; /* Branco acinzentado */
+            color: #000; /* Cor do texto no menu */
+            z-index: 1; /* Para ficar por cima do conteúdo */
+        }
+
+        .sidebar .list-group-item {
+            background-color: #f8f9fa; /* Branco acinzentado */
+            border-color: #f8f9fa; /* Branco acinzentado */
+            margin-bottom: 10px; /* Espaçamento entre as opções do menu */
+        }
+
+        .sidebar .list-group-item:hover {
+            background-color: #e9ecef; /* Cinza claro ao passar o mouse */
+        }
+
+        .sidebar .collapse.show {
+            background-color: #e9ecef; /* Cinza claro para itens do menu expandidos */
+        }
+
+        .sidebar .list-group-item.active {
+            background-color: #e9ecef; /* Cinza claro para item do menu ativo */
+            border-color: #e9ecef; /* Cinza claro para item do menu ativo */
+        }
+
+        /* Estilo para o botão de início */
+        .sidebar .list-group-item span {
+            margin-right: 10px;
+        }
+
+        /* Estilo para o menu superior */
+        .navbar-custom {
+            background-color: #343a40; /* Cor bg-dark do Bootstrap */
+            z-index: 2; /* Para ficar por cima do menu lateral */
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff; /* Cor do texto no menu */
+        }
+
+        .navbar-custom .nav-item {
+            margin-right: 10px; /* Espaçamento entre os itens do menu */
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #20b2aa; /* Azul turquesa mais escuro ao passar o mouse */
+        }
+
+        /* Estilo para o botão de login */
+        .btn-login {
+            background-color: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .btn-login:hover {
+            background-color: #20b2aa; /* Azul turquesa mais escuro ao passar o mouse */
+            border: 1px solid #20b2aa; /* Azul turquesa mais escuro ao passar o mouse */
+        }
+
+        /* Estilo para destacar a opção do menu lateral quando aberta */
+        .highlighted {
+            background-color: #ffff00 !important; /* Amarelo */
+            border-color: #ffff00 !important; /* Amarelo */
+        }
+
+        /* Estilo para ajustar o padding do corpo para evitar ocultação pelo menu superior */
+        body {
+            padding-top: 56px; /* Altura do menu superior */
+            padding-left: 270px; /* Largura do menu lateral + 20px de margem */
+        }
+
+        /* Estilo para o conteúdo da página */
+        .page-content {
+            margin-top: 20px; /* Espaçamento entre o conteúdo e o menu superior */
+            padding: 20px; /* Espaçamento interno do conteúdo */
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Superior -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema de Gestão</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-login">Login</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Lateral -->
+    <nav class="sidebar">
+        <div class="list-group">
+            <!-- Botão de Início com Ícone de Casa -->
+            <button class="list-group-item list-group-item-action bg-transparent border-0" disabled>
+                <span class="oi oi-home"></span> Início
+            </button>
+            <!-- Departamentos -->
+            <a href="#departamentos" class="list-group-item list-group-item-action" data-bs-toggle="collapse">
+                <span class="oi oi-briefcase"></span> Departamentos
+            </a>
+            <div class="collapse" id="departamentos">
+                <a href="#cadastrar-departamento" class="list-group-item list-group-item-action"><span class="oi oi-plus"></span> Cadastrar Departamento</a>
+                <a href="#listar-departamentos" class="list-group-item list-group-item-action"><span class="oi oi-spreadsheet"></span> Listar Departamentos</a>
+            </div>
+            <!-- Cargos -->
+            <a href="#cargos" class="list-group-item list-group-item-action" data-bs-toggle="collapse">
+                <span class="oi oi-briefcase"></span> Cargos
+            </a>
+            <div class="collapse" id="cargos">
+                <a href="/cargos/cadastrar.html" class="list-group-item list-group-item-action"><span class="oi oi-plus"></span> Cadastrar Cargo</a>
+                <a href="/cargos/listar" class="list-group-item list-group-item-action"><span class="oi oi-spreadsheet"></span> Listar Cargos</a>
+            </div>
+            <!-- Funcionários -->
+            <a href="#funcionarios" class="list-group-item list-group-item-action" data-bs-toggle="collapse">
+                <span class="oi oi-person"></span> Funcionários
+            </a>
+            <div class="collapse" id="funcionarios">
+                <a href="#cadastrar-funcionario" class="list-group-item list-group-item-action"><span class="oi oi-plus"></span> Cadastrar Funcionário</a>
+                <a href="#listar-funcionarios" class="list-group-item list-group-item-action"><span class="oi oi-spreadsheet"></span> Listar Funcionários</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo da página -->
+    <main class="page-content">
+        <!-- Aqui você pode colocar o conteúdo da sua página -->
+        <h1>Bem-vindo ao Sistema de Gestão</h1>
+        <p>Este é um exemplo de página com um menu lateral e um menu superior em Bootstrap.</p>
+    </main>
+
+    <!-- Bootstrap JavaScript e dependências -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Destacar opção do menu lateral quando aberta
+        $('.list-group-item').on('click', function() {
+            $('.list-group-item').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+</body>
+</html>
